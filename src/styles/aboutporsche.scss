@@ -1,0 +1,23 @@
+.about{
+  display: flex;
+  padding: 20px;
+  width:500px;
+  margin-left: 5%;
+  
+}
+.link{
+    color: black;
+    
+    text-decoration: none;
+    &:hover{
+        color: red;
+        text-decoration: none;
+    }
+} 
+.D-sec{
+ margin-top: 50px;
+}
+
+.text{
+    padding:5px;
+}

@@ -1,0 +1,60 @@
+
+
+.is-active{
+    font-weight: bold;
+    color : black;
+}
+
+
+.head{
+    padding-top: 25px;
+    padding-bottom: 15px;
+    background-color: rgb(34, 35, 48);
+    
+    
+}
+.headNav{
+    background-color:none;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: White;
+    font: 600 16px 'Open Sans', sans-serif;
+    font-weight: 600;
+    border-right:2px solid gray; 
+    &:hover{
+        text-decoration: none;
+        color: rgb(255, 196, 35);
+    }
+}
+.logo{
+    height: 100%;
+    width: 30%;   
+}
+.Logo-box{
+        padding:20px;
+        height: 100px;
+        display: flex;
+        
+        justify-content: center;
+        justify-content: space-between;
+        background-color:white;
+        
+}
+
+h4{
+ background-color:white; 
+ &:hover {
+    color: red;
+    
+    
+  }
+}
+.alignItem{
+ align-items: center;
+ padding-left: 30px;
+ padding-right: 30px;
+}
+.sliderimg{
+padding: 20px;
+}
+

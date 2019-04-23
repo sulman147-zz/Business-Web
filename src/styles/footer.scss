@@ -1,0 +1,170 @@
+
+#footer {
+    background: #19242a;
+}
+.sec-padding {
+    padding-top: 6em;
+    padding-bottom: 4.3em;
+}
+.widget.about-us-widget a {
+    color: #1FB5C7;
+    margin-top: 1.4em;
+}
+.widget.about-us-widget p {
+    color: #627279;
+    margin-top: 2em;
+    font-size: 1.1em;
+}
+.widget.about-us-widget ul {
+    margin: 0;
+    padding: 0;
+}
+.widget.about-us-widget ul li {
+    display: inline-block;
+    list-style: none;
+    padding: 10px 9px;
+}
+.widget.about-us-widget ul li:first-child {
+    padding-left: 0px;
+}
+.widget.about-us-widget ul li a {
+    padding: 0;
+    color: #7c7c7c;
+}
+.widget.about-us-widget ul li a:hover {
+    background: none;
+    color: #11adc6;
+}
+.widget.about-us-widget ul li a i {
+    font-size: 1.5em;
+}
+.widget.about-us-widget img {
+    max-width: 100%;
+}
+.widget-contact h4,
+.get-in-touch h4,
+.widget-links h4 {
+    font: 600 20px "Open Sans", sans-serif;
+    color: #fff;
+    margin-top: 0px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-style: italic;
+}
+.widget-contact h4:after,
+.get-in-touch h4:after,
+.widget-links h4:after {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: #0094b3;
+    display: block;
+    margin-top: 13px;
+}
+.widget-contact-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.widget-contact-list ul li a {
+    color: #627279;
+    text-transform: capitalize;
+    line-height: 39px;
+}
+.widget-contact-list ul li a:hover {
+    color: #009bb3;
+}
+.widget-contact-list ul li i {
+    float: left;
+    font-size: 25px;
+    color: #009bb3;
+    width: 34px;
+    padding-top: 13px;
+    line-height: 18px;
+}
+.widget.widget-contact ul li .fleft {
+    float: left;
+    color: #627279;
+    width: -webkit-calc(100% - 34px);
+    width: calc(100% - 34px);
+    font: 400 1em/1.4em "Open Sans", sans-serif;
+    padding: 1.1em 0 0;
+}
+.widget.widget-contact ul li .fleft span {
+    color: #1FB5C7;
+}
+.widget.widget-contact ul li i.fa-map-marker {
+    padding-top: 22px;
+}
+.widget.widget-contact ul li i.fa-phone {
+    font-size: 21px;
+    line-height: 41px;
+}
+.widget.widget-contact ul li i.fa-envelope-o {
+    font-size: 18px;
+    line-height: 41px;
+}
+.widget.widget-contact ul li i.icon-Timer {
+    font-size: 20px;
+    line-height: 35px;
+}
+.footer-bottom {
+    background: #141d22;
+    color: #555759;
+    padding: 2em 0;
+}
+.footer-bottom .fo-txt p {
+    color: #555759;
+    font: 400 1em/1em "Open Sans", sans-serif;
+}
+.footer-bottom .fo-txt p a {
+    color: #1d8898;
+}
+.footer-bottom .fo-txt p a:hover {
+    color: #f6ba18;
+}
+.get-in-touch {
+    position: relative;
+}
+.get-in-touch ul {
+    margin: 0;
+    padding: 0;
+}
+.get-in-touch ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    float: left;
+}
+.get-in-touch ul li img {
+    margin: 0 3px 3px 0;
+    width: 84px;
+    height: 68px;
+}
+.footer-bg3 {
+    background: url("http://aci.com.pk/images/footer/bg.jpg") no-repeat center center;
+    padding: 59px 0;
+    min-height: 408px;
+    background-size: cover;
+}
+.footer-bg3 h4 .widget_title {
+    text-transform: capitalize;
+    font-style: italic;
+    border: 5px solid blue;
+}
+.footer-bg3 .widget-links {
+    padding: 0 50px;
+}
+.footer-bottom3 {
+    padding: 33px 0;
+}
+.footer-bottom3 .fo-txt p {
+    margin: 0;
+}
+.footer-bottom3 .fo-txt p a {
+    color: #454d54;
+}
+h4{
+ background: none;
+}
