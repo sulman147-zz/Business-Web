@@ -3,9 +3,8 @@ import MainCarousel from '../components/subcomponents/MainCarousel';
 import  '../styles/model.scss';
 import { Container, Row, Col }from 'react-bootstrap';
 import SimpleSlider from '../components/subcomponents/Slider';
-import Gallery from '../components/subcomponents/Gallery';
 import Ourproduct from '../components/subcomponents/Ourproduct';
-import Smallslider from '../components/subcomponents/Smallslider';
+import ''
 
 import Button from 'react-bootstrap/Button';
 import FormExample from '../components/subcomponents/GetinTouch';
@@ -13,8 +12,6 @@ import FormExample from '../components/subcomponents/GetinTouch';
 export default class Models extends React.Component {
     render () {
         return(
-
-   
     <div className="Model">
       <MainCarousel/>
       <Ourproduct/> 
