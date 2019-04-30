@@ -15,7 +15,7 @@ render() {
         <Container>
             <Row>
                 <Col xs lg="4" className="col"><img
-                    src="http://aci.com.pk/images/products/228product_97.jpg"
+                    src="http://aci.com.pk/images/products/74product_454.jpg"
                     alt="First slide"
                 />
                 <h2>Sulphuric Acid</h2>

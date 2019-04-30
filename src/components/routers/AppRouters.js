@@ -1,20 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
-import AboutPorsche from '../../Pages/AboutPorsche';
-import Models from '../../Pages/Models';
-import MotorsportEvent from '../../Pages/Motorsport&Event';
-import PorscheFinder from '../../Pages/PorscheFinder';
-import ServiceAccessories from '../../Pages/Service&Accessories';
+import Home from '../../Pages/Home';
+import About from '../../Pages/About';
+import Products from '../../Pages/Products';
+import Contact from '../../Pages/Contact';
+import Groupcompanies from '../../Pages/Groupcompanies';
 import NotFoundPage from '../../Pages/NotFoundPage';
 import Header from '../subcomponents/Header';
 import Footer from '../subcomponents/footer';
 import '../../styles/styles.scss';
-
-
-
-
-
 
 const AppRouter = ( ) => (
     <BrowserRouter>
@@ -22,11 +17,11 @@ const AppRouter = ( ) => (
          <Header/>
          
          <Switch>
-            <Route path="/" component={Models} exact= {true}/>
-            <Route path="/Porsche-Finder" component={PorscheFinder}/>
-            <Route path="/Motorsport-&-Event" component={MotorsportEvent}/>
-            <Route path="/Service-&-Accessories" component={ServiceAccessories} exact= {true}/>
-            <Route path="/About-Porsche" component={AboutPorsche}/>
+            <Route path="/" component={Home} exact= {true}/>
+            <Route path="/ContactUs" component={Contact} exact= {true}/>
+            <Route path="/Products" component={Products} exact= {true}/>
+            <Route path="/GroupCompanies" component={Groupcompanies} exact= {true}/>
+            <Route path="/About" component={About} exact= {true}/>
             <Route component = {NotFoundPage}/>
          </Switch>
          <Footer/>

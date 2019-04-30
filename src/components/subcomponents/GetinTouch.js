@@ -19,19 +19,19 @@ export default class FormExample extends React.Component {
           <div className="contactform">
             <form onSubmit={this.handleSubmit}>
                 <Col sm={12} >
-                    <input type="email" placeholder="Your Name:" className="input" />
+                    <input type="text" placeholder="Your Name:" className="input" />
                 </Col>
                 <Col sm={12} >
                     <input type="email" placeholder="Your Email" className="input" />
                 </Col>
                 <Col sm={12} >
-                    <input type="email" placeholder="Your Phone Number" className="input" />
+                    <input type="text" placeholder="Your Phone Number" className="input" />
                 </Col>
                 <Col sm={12} >
                     <input type="password" placeholder="Subject" className="input" />
                 </Col>
             
-                <textarea className="inputmessage">
+                <textarea type="text"className="inputmessage">
                    Your Message:
                 </textarea>
 
