@@ -1,6 +1,5 @@
 import { Carousel }from 'react-bootstrap';
 import React from 'react';
-import Button from 'react-bootstrap';
 
 export default class MainCarousel extends React.Component {
 render() {
@@ -10,7 +9,7 @@ render() {
       };
     return (
 
-    
+    <div>
     <Carousel>
     <Carousel.Item >
         <img className="d-block w-100"
@@ -42,6 +41,7 @@ render() {
     
     
 </Carousel>  
+</div>
    )
  }
 }

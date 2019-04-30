@@ -1,39 +1,33 @@
 
-
 .is-active{
     font-weight: bold;
     color : black;
 }
 
-
-.head{
-    padding-top: 25px;
-    padding-bottom: 15px;
-    background-color: rgb(34, 35, 48);
-    width:100%;   
-}
-.Nav-bar{
-    background-color:  'rgb(255, 196, 35)';
-    margin-Top:'25px';
-    
-}
 .headNav{
     background-color:none;
-    padding-left: 30px;
-    padding-right: 30px;
-    color: White;
-    font: 600 16px 'Open Sans', sans-serif;
-    font-weight: 600;
-    border-right:2px solid gray; 
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    color: White !important;
+    font: 600 16px 'Open Sans', sans-serif !important;
+    font-weight: 600 !important;
+    border-right:2px solid gray !important; 
     &:hover{
-        text-decoration: none;
-        color: rgb(255, 196, 35);
+        text-decoration: none !important;
+        color: rgb(255, 196, 35) !important;
     }
 }
 .logo{
-    height: 100%;
-    width: 30%; 
+    height: 100px;
+    width: 200px; 
       
+}
+.InfoBox{
+    display: flex;
+    align-items: center;
+    h3{
+        margin-right: 20px;
+    }
 }
 .Logo-box{
         padding:20px;
@@ -43,6 +37,7 @@
         justify-content: center;
         justify-content: space-between;
         background-color:white;
+        margin-bottom: 30px;
         
 }
 
@@ -62,4 +57,9 @@ h4{
 .sliderimg{
 padding: 20px;
 }
+
+
+
+
+
 

@@ -13,9 +13,7 @@ import '../../styles/styles.scss';
 
 const AppRouter = ( ) => (
     <BrowserRouter>
-      <div>
          <Header/>
-         
          <Switch>
             <Route path="/" component={Home} exact= {true}/>
             <Route path="/ContactUs" component={Contact} exact= {true}/>
@@ -25,7 +23,6 @@ const AppRouter = ( ) => (
             <Route component = {NotFoundPage}/>
          </Switch>
          <Footer/>
-      </div>
     </BrowserRouter>
 );
 
