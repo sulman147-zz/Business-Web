@@ -16,12 +16,12 @@ const  Header = () => (
                 <img src="http://aci.com.pk/images/header/akbari_logo.png" width="100%" height="100%"/>
             </span>
             <div className="InfoBox">
-               <h3>info@aci.com.pk</h3>
+               <span>info@aci.com.pk</span>
                <Button variant="warning">REQUEST A QUOTE</Button>
             </div>
         </div>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand  to="/">CHEMICAL WEB</Navbar.Brand>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
+            <Navbar.Brand  href="/"><strong>CHEMICAL WEB</strong></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">

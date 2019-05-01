@@ -8,10 +8,21 @@ render() {
     return (
             
     <div className="modelsText">
-                <h2>OUR PRODUCTS</h2>
-                <p>
-                    " Akbari Chemical Industries (Pvt.) Ltd produces quality industrial chemicals and fertilizers at its state of the art chemical facility. A complete list of our products is given below:"
-                </p>
+                <div className="modelstop">
+
+                <Container>
+            <Row >
+                <Col xs="12" lg="4" >
+                <h1>Our Products</h1>
+                </Col>
+                <Col xs="12" lg="8" >
+                  <p>" Akbari Chemical Industries (Pvt.) Ltd produces quality industrial chemicals and fertilizers at its state of the art chemical facility. A complete list of our products is given below:"</p>
+                </Col>
+               </Row>  
+           </Container>
+                
+                </div>
+
         <Container>
             <Row>
                 <Col xs lg="4" className="col"><img
