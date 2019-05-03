@@ -5,27 +5,54 @@ import { IoIosAddCircle ,IoIosAdd} from "react-icons/io";
 import { Container, Row, Col ,Button}from 'react-bootstrap';
 import  '../styles/ContactUs.scss';
 
+
+
+
+
+
+
+
+
 class Contact extends Component {
-    constructor(){
-        super()
-       this.state = {
-            email: {
-              recipient:'',
-              sender: '',
-              subject: '',
-              text: ''
-            }
-          }
-      
-    }
-    sendEmail = () => {
-        const { email } = this.state;
-        fetch(`http://127.0.0.1:4567/send-email?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
-          .catch(err => console.error(err))
-      }
+  constructor(props) {
+    super(props);
+  this.state = {
+      name:'',
+      recipient:'waleedmuaz2@gmail.com',
+      sender: '',
+      subject: '',
+      text: ''
+  }
+}
+  
+  sendEmail = _ => {
+    if(this.state.sender==''){
+      alert('please enter your Name ');
+    }else if(this.state.sender==''){
+      alert('please enter your email id ');
+    }else if(this.state.subject==''
+    ){
+      alert('please enter Proper Subject ');
+    }else if(this.state.text==''){
+      alert('please enter your Message ');
+    }else{
+    
+    fetch(`http://127.0.0.1:4567/send-email?recipient=${this.state.recipient}&sender=${this.state.sender}&topic=${this.state.subject}&text=${this.state.text}`) //query string url
+      .catch(err => console.error('this is erroe'+err));
+      alert('Your Email is sent');
+      this.setState({
+        name:'',
+        sender: '',
+        subject: '',
+        text: ''
+                      
+    })
+  } 
+}
 
     render() {
-       
+       const { email } = this.state;
+       console.log( email);
         return (
           <div className="Contact">
              <div className="Contact-top">
@@ -37,16 +64,16 @@ class Contact extends Component {
              <Row>
                <Col sm lg="7">
                   <div className="Contact-Form" >
-                    <input  placeholder="Your Name:"/>
+                    <input value={ this.state.name} onChange={e => this.setState({name:e.target.value})}  placeholder="Your Name:"/>
               
-                    <input  placeholder="Your Email:"/>
+                    <input value={ this.state.sender} onChange={e => this.setState({sender:e.target.value})} placeholder="Your Email:"/>
               
-                    <input  placeholder="Your Phone Number:"/>
+                    <input value={ this.state.subject} onChange={e => this.setState({subject:e.target.value})} placeholder="Subject:"/>
          
-                    <input  placeholder="Your Name:"/>
+                  
           
-                    <textarea placeholder="Your Message:" />
-                    <button  className="Button_c"> SUBMIT NOW<FaAngleDoubleRight size="1.1em"/> </button>
+                    <textarea value={ this.state.text} onChange={e => this.setState({text:e.target.value})} placeholder="Your Message:" />
+                    <button  onClick={this.sendEmail} className="Button_c"> SUBMIT NOW<FaAngleDoubleRight size="1.1em"/> </button>
                   </div>
                
                 </Col>

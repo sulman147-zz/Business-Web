@@ -419,6 +419,7 @@ export default class Products extends React.Component {
                   'Evoil Wheat Germ Oil(Wheat Germ Oil)',
                   'Egms',
                   'Egds',
+                  'IsoPropyl Phenol',
                   'Ammonium Persulfate',
                   'Potassium Persulfate',
                   'Dmdm Hydantoin (Liquid & Powder)',
