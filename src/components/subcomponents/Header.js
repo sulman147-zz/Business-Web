@@ -17,7 +17,7 @@ const  Header = () => (
             </span>
             <div className="InfoBox">
                <span>info@aci.com.pk</span>
-               <Button variant="warning">REQUEST A QUOTE</Button>
+               <Button variant="warning"><a href="/ContactUs">REQUEST A QUOTE</a></Button>
             </div>
         </div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
@@ -28,7 +28,6 @@ const  Header = () => (
                     <NavLink to="/" activeClassName="is-active" exact= {true} className="headNav">HOME </NavLink>
                     <NavLink to="/About" activeClassName="is-active" className="headNav">ABOUT US</NavLink>
                     <NavLink to="/Products" activeClassName="is-active" className="headNav">PRODUCTS</NavLink>
-                    <NavLink to="/Groupcompanies" activeClassName="is-active" className="headNav"> GROUP COMPANIES</NavLink>
                     <NavLink to="/ContactUs" activeClassName="is-active" className="headNav"> CONTACT US</NavLink>
                 </Nav>
             </Navbar.Collapse>

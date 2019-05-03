@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { FaMapMarker ,FaPhone ,FaRegEnvelope ,FaAngleDoubleRight} from 'react-icons/fa';
-import { IoIosAddCircle ,IoIosAdd} from "react-icons/io";
-import { Container, Row, Col ,Button}from 'react-bootstrap';
+import { Container, Row, Col}from 'react-bootstrap';
 import  '../styles/ContactUs.scss';
-
-
-
-
-
-
-
 
 
 class Contact extends Component {
