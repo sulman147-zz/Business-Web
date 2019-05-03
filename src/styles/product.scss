@@ -25,6 +25,13 @@
     background : #0f263a;
     justify-content: space-between;
     padding-top:10px;
+    Button{
+        font-weight: bold;
+        .Button:hover{
+            background-color: skyblue;
+            color: white;
+            }
+    }
     
  
 }
@@ -35,7 +42,6 @@
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
-   
      li {
         display: flex;
         background: rgba(255, 255, 255,.1);
@@ -77,3 +83,22 @@
         margin-top: 10px;
     }
 }
+.pagination{
+    background-color: #ffc107;
+    padding :10px;
+    font-weight: bold;
+    width:100%;
+    
+    li{
+       
+        cursor: pointer;
+        text-align: center;
+        margin-left: 20px;
+        a{
+            text-align: center;
+        }
+       
+    }
+}
+
+

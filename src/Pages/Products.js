@@ -1,19 +1,161 @@
 import React from 'react';
 import {ButtonGroup,Button} from 'react-bootstrap';
 import { Container, Row, Col }from 'react-bootstrap';
+import {FaAngleDoubleLeft,FaAngleDoubleRight,FaAngleLeft,FaAngleRight} from 'react-icons/fa';
 import Slider  from "react-slick";
 import  '../styles/product.scss';
 
 
+
+
+class Pagination extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = { pager: {} };
+  }
+
+  componentWillMount() {
+      // set page if items array isn't empty
+      if (this.props.items && this.props.items.length) {
+          this.setPage(this.props.initialPage);
+      }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+      // reset page if items array has changed
+      if (this.props.items !== prevProps.items) {
+          this.setPage(this.props.initialPage);
+      }
+  }
+
+  setPage(page) {
+      var items = this.props.items;
+      var pager = this.state.pager;
+
+      if (page < 1 || page > pager.totalPages) {
+          return;
+      }
+
+      // get new pager object for specified page
+      pager = this.getPager(items.length, page);
+
+      // get new page of items from items array
+      var pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1);
+
+      // update state
+      this.setState({ pager: pager });
+
+      // call change page function in parent component
+      this.props.onChangePage(pageOfItems);
+  }
+
+  getPager(totalItems, currentPage, pageSize) {
+      // default to first page
+      currentPage = currentPage || 1;
+
+      // default page size is 10
+      pageSize = pageSize || 10;
+
+      // calculate total pages
+      var totalPages = Math.ceil(totalItems / pageSize);
+
+      var startPage, endPage;
+      if (totalPages <= 10) {
+          // less than 10 total pages so show all
+          startPage = 1;
+          endPage = totalPages;
+      } else {
+          // more than 10 total pages so calculate start and end pages
+          if (currentPage <= 6) {
+              startPage = 1;
+              endPage = 10;
+          } else if (currentPage + 4 >= totalPages) {
+              startPage = totalPages - 9;
+              endPage = totalPages;
+          } else {
+              startPage = currentPage - 5;
+              endPage = currentPage + 4;
+          }
+      }
+
+      // calculate start and end item indexes
+      var startIndex = (currentPage - 1) * pageSize;
+      var endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
+
+      // create an array of pages to ng-repeat in the pager control
+      var pages = [...Array((endPage + 1) - startPage).keys()].map(i => startPage + i);
+
+      // return object with all pager properties required by the view
+      return {
+          totalItems: totalItems,
+          currentPage: currentPage,
+          pageSize: pageSize,
+          totalPages: totalPages,
+          startPage: startPage,
+          endPage: endPage,
+          startIndex: startIndex,
+          endIndex: endIndex,
+          pages: pages
+      };
+  }
+
+  render() {
+      var pager = this.state.pager;
+
+      if (!pager.pages || pager.pages.length <= 1) {
+          // don't display pager if there is only 1 page
+          return null;
+      }
+
+      return (
+          <ul className="pagination">
+              <li className={pager.currentPage === 1 ? 'disabled' : ''}>
+                  <a onClick={() => this.setPage(1)}> <FaAngleDoubleLeft size="1.1em"/> First</a>
+              </li>
+              <li className={pager.currentPage === 1 ? 'disabled' : ''}>
+                  <a onClick={() => this.setPage(pager.currentPage - 1)}><FaAngleLeft size="1.1em"/> Previous</a>
+              </li>
+              {pager.pages.map((page, index) =>
+                  <li key={index} className={pager.currentPage === page ? 'active' : ''}>
+                      <a onClick={() => this.setPage(page)} >{page}</a>
+                  </li>
+              )}
+              <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+                  <a onClick={() => this.setPage(pager.currentPage + 1)}>Next <FaAngleRight size="1.1em"/></a>
+              </li>
+              <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+                  <a onClick={() => this.setPage(pager.totalPages)}>Last <FaAngleDoubleRight size="1.1em"/></a>
+              </li>
+          </ul>
+      );
+  }
+}
+
 export default class Products extends React.Component {
 
     constructor(){
+      
         super();
-        this.state = {items:[],heading:''};
+        this.product = [ ];
+        var exampleItems = this.product.map(i => ({ id: (i+1), name:   (i+1) }));
+        this.state = {
+          exampleItems: exampleItems,
+          pageOfItems: [],
+          heading:''
+      };
+      this.onChangePage = this.onChangePage.bind(this);
     }
+
+   
+    onChangePage(pageOfItems) {
+      // update state with new page of items
+      this.setState({ pageOfItems: pageOfItems });
+  }
+
+  
       handleClickIndustrial=() => {
-        this.setState(state => ({
-          items: ['ACID ACETIC (Glacial)','ACID HYDROCHLORIC, Commercial, E.P','ACID HYDROFLOURIC','ACID NITRIC, Commercial, E.P.','ACID PHOSPHORIC 75%, 85% (Tech.), 85% (Food Grade)','ACID SULPHONIC 90%, 96%',
+        this.product=
+        ['ACID ACETIC (Glacial)','ACID HYDROCHLORIC, Commercial, E.P','ACID HYDROFLOURIC','ACID NITRIC, Commercial, E.P.','ACID PHOSPHORIC 75%, 85% (Tech.), 85% (Food Grade)','ACID SULPHONIC 90%, 96%',
                   'ACID SULPHURIC Comm, Electrolyte, E.P.','ACID TARTARIC, Powder, Lumps','ACRYLAMIDE','AEROSIL-200 (FUMED SILICA)','ACTIVATED CARBON, Powder & Granular','ALUMINIUM HYDROXIDE',
                   'ALUMINIUM POTASSIUM SULPHATE','ALUMINIUM STEARATE','ALUMINIUM SULPHATE (Powder, Crystals, Lumps)',  'AMMONIUM CHLORIDE Commercial, E.P. Powder',  'AMMONIA LIQUOR Commercial, E.P. 18-33% ((AMMONIUM HYDROXIDE))','AMMONIUM BICARBONATE Edible','AMMONIUM BICHROMATE Powder, Crystals',  
                   'AMMONIUM PER SULPHATE','AMMONIUM SULPHATE','ANTIFOAM', 'ANTIMONY TRIOXIDE', 'ARSENIC Powder',  'ASBESTOS',  'ASCORBIC ACID (VITAMIN C)',  'BARIUM CARBONATE',  'BARIUM CHLORIDE',  'BARIUM NITRATE',  'BARIUM PEROXIDE',  'BARIUM SULPHATE Precipitated, X-Ray Grade',  
@@ -173,17 +315,14 @@ export default class Products extends React.Component {
  'ZINC STEARATE',
  'ZINC SULPHATE (POWDER, GRANULAR)'
 
-         ],heading:'Industrial Chemicals'
-        
+         ]
+         var exampleItems = this.product.map(i => ({ id: (i+1), name:   (i+1) }));
+         this.setState({ exampleItems: exampleItems ,heading:'Industrial'});
+         
         }
-        
-        
-        ));
-    }
 
       handleClickSelf=() => {
-        this.setState(state => ({
-          items: ['OCD-7X Liquid Concentrate Air Cooler Cleaner----For Choked Copper Fins'
+        this.product= ['OCD-7X Liquid Concentrate Air Cooler Cleaner----For Choked Copper Fins'
            ,'GLC-5R Liquid Concentrate Air Cooler Cleaner----For Choked Aluminium Fins'
            ,'OCD-4 Liquid Concentrate Carbon Cleaner Engine Parts Cleaner. All metals safe'
            ,'GLC-7 Liquid Concentrate Engine Jackets Cleaner For In-Situ Cleaning of Jacket Water Cooling Circuit'
@@ -220,14 +359,14 @@ export default class Products extends React.Component {
            ,'XR-10 CLEAR COAT (Water Dilutable) Single Component Corrosion Resistant Coating for Finned Air Coolers For all ferrous and non-ferrous metals'
            ,'XR-12 CLEAR COAT (Evaporative) Single Component Corrosion Resistant Coating for Finned Air Coolers For all ferrous and non-ferrous metals '
            ,'XR-11 RUST CONVERTER Pre-paint Rust Converter Single Component For all ferrous metals'
-          ],
-          heading:'Self manufactured'
+          ]
+          var exampleItems = this.product.map(i => ({ id: (i+1), name:   (i+1) }));
+         this.setState({ exampleItems: exampleItems ,heading:'Self manufactured'
         }
-        ));
+        );
       }
       handleClickJanitorial=() => {
-        this.setState(state => ({
-          items: ['Adhensive Removers',
+        this.product=['Adhensive Removers',
                   'All purpose Cleaners',
                   'Bathroom Cleaners',
                   'Carpet & Upholstery Cleaners',
@@ -251,13 +390,15 @@ export default class Products extends React.Component {
                   'Wastewater Treatment and Bioaugmentation',
                   'Wet Cleaning Wipes and Dispensers',
                   'Wood Cleaners'
-        ],heading:'Janitorial and Cleaning products'
+        ]
+        var exampleItems = this.product.map(i => ({ id: (i+1), name:   (i+1) }));
+         this.setState({ exampleItems: exampleItems ,heading:'Janitorial and Cleaning products'
+        
         }
-        ));
+        );
       }
       handleClickCosmetic=() => {
-        this.setState(state => ({
-          items: ['Medmuls Sx (Emulsifying Wax)',
+        this.product=['Medmuls Sx (Emulsifying Wax)',
                   'Cetyl Palmitate',
                   'C12-15 Alkyl Benzoate',
                   'Lipowax Pr (Stand Alone Emulsifying Wax)',
@@ -282,16 +423,21 @@ export default class Products extends React.Component {
                   'Potassium Persulfate',
                   'Dmdm Hydantoin (Liquid & Powder)',
                   'Saligin Mp (Methyl Paraben)',
-        ],heading:'Cosmetic and pharma industry'
+        ]
+        var exampleItems = this.product.map(i => ({ id: (i+1), name:   (i+1) }));
+        this.setState({ exampleItems: exampleItems ,heading:'Cosmetic and pharma industry'
         }
-        ));
+        );
       }
 
       
 
     render() {
-        let items = this.state.items
-        let heading =this.state.heading
+
+
+       
+        // let items = this.state.items;
+        // let heading =this.state.heading
         var settings = {
             arrows:false,
             autoplay:true,
@@ -301,6 +447,8 @@ export default class Products extends React.Component {
             slidesToScroll: 1,
             
           };
+
+          
         return (
             <div className="products">
             <Container>
@@ -380,23 +528,28 @@ export default class Products extends React.Component {
 
 
            <div className="camicals">
-                  
-
+          
+                
                 
                   <ButtonGroup aria-label="Basic example" className="list-one"> 
                    <Button variant="warning" onClick={this.handleClickIndustrial}>Industrial Chemicals</Button>
                    <Button variant="warning" onClick={this.handleClickSelf }>Self manufactured</Button>
                    <Button variant="warning" onClick={this.handleClickJanitorial }>Janitorial and Cleaning products</Button>
-                   <Button variant="warning"onClick={this.handleClickCosmetic }>Cosmetic and pharma industry</Button>
+                   <Button variant="warning" onClick={this.handleClickCosmetic }>Cosmetic and pharma industry</Button>
                   </ButtonGroup>
 
+                  
 
-                  <div className="list-two">
-                <h1>{heading}</h1>
-                {items.map(item => 
-                                    <li key={item}>{item} </li> 
-                                  )}
-                </div>
+
+                  
+                    <div className="list-two">
+                        <h1>{this.state.heading}</h1>
+                        {this.state.pageOfItems.map(item =>
+                            <li key={item.id}>{item.name}</li>
+                        )}
+
+                        </div>
+                        <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} /> 
            </div>
        
         
@@ -404,3 +557,15 @@ export default class Products extends React.Component {
         )
      }
     }
+    
+class List extends React.Component {
+	render() {
+    return (
+      <ul>
+      {this.props.items.map(function(item) {
+				return <li key={item}>{item}</li>
+			})}
+      </ul>
+    );  
+  }
+}
